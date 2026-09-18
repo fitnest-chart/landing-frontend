@@ -41,7 +41,8 @@ resources:
     memory: 384Mi
 env:
   NODE_ENV: production
-  NEXT_PUBLIC_API_URL: "https://api.fitnest.az"
+  API_BASE_URL: "https://api.fitnest.az/api/v1"
+  NEXT_PUBLIC_API_BASE_URL: "/api/proxy"
 assetLinks:
   enabled: true
   secretName: assetlinks-secret
