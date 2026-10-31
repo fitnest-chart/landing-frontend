@@ -19,6 +19,9 @@ ingress:
   annotations:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    # www hits origin with SNI www.fitnest.az; without this TLS host nginx
+    # serves the fake default cert and Cloudflare Full (strict) returns 526.
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
   hosts:
     - host: fitnest.az
       paths:
@@ -27,6 +30,7 @@ ingress:
   tls:
     - hosts:
         - fitnest.az
+        - www.fitnest.az
       secretName: fitnest-tls
   backend:
     service:
