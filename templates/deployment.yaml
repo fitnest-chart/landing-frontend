@@ -33,6 +33,12 @@ spec:
             - name: {{ $key }}
               value: {{ $value | quote }}
             {{- end }}
+            - name: LANDING_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: landing-api-key
+                  key: LANDING_API_KEY
+                  optional: true
           {{- end }}
           {{- if .Values.assetLinks.enabled }}
           volumeMounts:
