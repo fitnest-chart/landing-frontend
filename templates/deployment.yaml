@@ -47,6 +47,13 @@ spec:
               value: {{ .Values.vault.addr | default "http://vault-dev.fitnest-development.svc.cluster.local:8200" | quote }}
             - name: VAULT_SECRET_PATH
               value: {{ printf "landing-frontend/%s" (.Values.vaultEnv | default "development") | quote }}
+            # Prefer explicit k8s secret so key works even if Vault path is missing/read-only.
+            - name: LANDING_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: landing-api-key
+                  key: LANDING_API_KEY
+                  optional: true
           {{- end }}
           {{- if .Values.assetLinks.enabled }}
           volumeMounts:
