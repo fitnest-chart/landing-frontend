@@ -50,3 +50,8 @@ env:
 assetLinks:
   enabled: true
   secretName: assetlinks-secret
+
+# Vault fetch for LANDING_API_KEY (optional; k8s secret landing-api-key is preferred).
+vault:
+  addr: "https://vault.fitnest.az"
+vaultEnv: production
