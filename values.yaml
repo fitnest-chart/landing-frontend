@@ -3,7 +3,7 @@
 replicaCount: 1
 image:
   repository: ghcr.io/fitnest-code/landing-frontend
-  tag: "development-19b3ead"
+  tag: "development-84c3134"
   pullPolicy: IfNotPresent
   imagePullSecrets:
     - name: ghcr-secret
